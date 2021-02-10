@@ -63,4 +63,38 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <finalName>hiber</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <executions>
+                    <execution>
+                        <id>deploy-on-verify</id>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                        <phase>install</phase>
+                        <configuration>
+                            <server>localtomcat</server>
+                            <url>http://localhost:8080/manager/text</url>
+                            <path>/${project.build.finalName}</path>
+                            <update>true</update>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
