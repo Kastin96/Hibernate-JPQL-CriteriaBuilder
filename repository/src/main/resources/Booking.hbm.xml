@@ -8,9 +8,11 @@
             <column name="id"/>
             <generator class="identity"/>
         </id>
+
         <property name="productName">
             <column name="product_name"/>
         </property>
+
         <property name="cost">
             <column name="cost"/>
         </property>
